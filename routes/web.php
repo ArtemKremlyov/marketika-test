@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthorsController;
+use App\Http\Controllers\BooksController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,4 +18,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
 Route::resource('admin.authors', AuthorsController::class);
+Route::resource('admin.books', BooksController::class);
