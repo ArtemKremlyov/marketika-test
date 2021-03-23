@@ -3,7 +3,8 @@
 @section('page-title') Books authors @endsection
 
 @section('content')
-    <div class="container">
+    <div class="container pt-5">
+        <h1 class="card-title text-center mb-5">All authors</h1>
         <table class="table">
             <thead>
                 <tr>
@@ -16,7 +17,7 @@
                 <tr>
                     <td>{{$author->name}}</td>
                     <td>{{$author->birthdate}}</td>
-                    <td>{{$author->name}}</td>
+                    <td>{{$author->booksCount}}</td>
                 </tr>
             @endforeach
         </table>

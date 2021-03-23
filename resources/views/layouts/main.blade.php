@@ -10,9 +10,7 @@
 </head>
 <body>
     <div class="wrapper">
-        <div class="container">
-            @yield('content')
-        </div>
+        @yield('content')
     </div>
 </body>
 </html>

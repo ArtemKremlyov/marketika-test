@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\AuthorsController;
-use App\Http\Controllers\BooksController;
+use App\Http\Controllers\Admin\AuthorsController;
+use App\Http\Controllers\Admin\BooksController;
 use App\Http\Controllers\MainController;
 use Illuminate\Support\Facades\Route;
 
