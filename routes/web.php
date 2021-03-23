@@ -19,9 +19,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('admin/authors', AuthorsController::class);
-Route::resource('admin/books', BooksController::class);
 
 Auth::routes();
+
+Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
+    Route::resource('authors', AuthorsController::class);
+    Route::resource('books', BooksController::class);
+});
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
