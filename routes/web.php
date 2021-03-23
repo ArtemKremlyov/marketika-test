@@ -19,5 +19,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('admin.authors', AuthorsController::class);
-Route::resource('admin.books', BooksController::class);
+Route::resource('admin/authors', AuthorsController::class);
+Route::resource('admin/books', BooksController::class);
