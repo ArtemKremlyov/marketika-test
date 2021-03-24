@@ -27,7 +27,7 @@
                             <a href="{{route('books.show', $book)}}" class="btn btn-primary">Show</a>
                         </td>
                         <td>
-                            <a href="#" class="btn btn-secondary">Edit</a>
+                            <a href="{{route('books.edit', $book)}}" class="btn btn-secondary">Edit</a>
                         </td>
                         <td>
                             <form action="{{route('books.destroy', $book)}}" method="POST">

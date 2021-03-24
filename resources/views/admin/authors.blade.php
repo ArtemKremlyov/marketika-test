@@ -27,7 +27,7 @@
                     <td>{{$author->books->count()}}</td>
                     <td>
                         <a href="{{route('authors.show', $author)}}" class="btn btn-primary">Show</a>
-                    </td>
+
                     <td>
                         <a href="#" class="btn btn-secondary">Edit</a>
                     </td>
