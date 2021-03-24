@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Author;
 use Illuminate\Http\Request;
+use function React\Promise\reduce;
 
 class AuthorsController extends Controller
 {
@@ -82,6 +83,7 @@ class AuthorsController extends Controller
      */
     public function destroy(Author $author)
     {
-        //
+        $author->delete();
+        return redirect()->route('authors.index')->withSuccess($author->name.'- success deleted');
     }
 }
