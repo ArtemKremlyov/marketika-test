@@ -18,7 +18,11 @@
             </div>
             <div class="col-6 d-flex flex-column align-items-start">
                 <a href="/" class="btn btn-primary mb-2">Edit book info</a>
-                <a href="/" class="btn btn-danger" onclick="">Delete book</a>
+                <form action="{{route('books.destroy', $book)}}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
             </div>
         </div>
         <a href="{{route('books.index')}}" class="btn btn-danger">Back to books page</a>

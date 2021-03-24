@@ -39,6 +39,6 @@
                 @endforeach
             </tbody>
         </table>
-    <div class="row d-flex justify-content-center">{{$books->links()}}</div>
+        <div class="row d-flex justify-content-center">{{$books->links()}}</div>
     </div>
 @endsection
