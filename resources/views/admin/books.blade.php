@@ -3,7 +3,8 @@
 
 @section('content')
     <div class="container">
-        <h1 class="card-title text-center mt-5 mb-5 text-primary">All books</h1>
+        <h1 class="card-title text-center mt-5 mb-3 text-primary">All books</h1>
+        <a href="{{route('books.create')}}" class="btn btn-dark mb-5 w-100 ">Create book</a>
         @if(session('success'))
             <div class="alert alert-success">{{session('success')}}</div>
         @endif

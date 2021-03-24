@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Author;
 use App\Models\Book;
 use Illuminate\Http\Request;
 
@@ -26,7 +27,8 @@ class BooksController extends Controller
      */
     public function create()
     {
-        //
+        $authors = Author::all();
+        return view('admin.book_create', compact('authors'));
     }
 
     /**
@@ -37,7 +39,8 @@ class BooksController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Book::create($request->only(['title', 'author_id', 'description']));
+        return redirect()->route('books.index')->withSuccess('Book: '.$request->title.' success created');
     }
 
     /**
