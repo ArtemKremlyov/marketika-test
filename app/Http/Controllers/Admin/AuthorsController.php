@@ -49,7 +49,7 @@ class AuthorsController extends Controller
      */
     public function show(Author $author)
     {
-        //
+        return view('admin.author', compact('author'));
     }
 
     /**

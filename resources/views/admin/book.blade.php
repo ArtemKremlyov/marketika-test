@@ -10,7 +10,7 @@
                     <li class="list-group-item">Book Id: <span class="font-weight-bold">{{$book->id}}</span></li>
                     <li class="list-group-item">Title: <span class="font-weight-bold">{{$book->title}}</span></li>
                     <li class="list-group-item">Description: <span class="font-weight-bold">{{$book->description}}</span></li>
-                    <li class="list-group-item">Author: <span class="font-weight-bold">{{$book->author->name}}</span></li>
+                    <li class="list-group-item">Author: <span class="font-weight-bold">{{$book->author->name ?? 'Unkown Author'}}</span></li>
                     <li class="list-group-item"></li>
                     <li class="list-group-item">Created at: <span class="font-weight-bold">{{$book->created_at}}</span></li>
                     <li class="list-group-item">Last update: <span class="font-weight-bold">{{$book->updated_at}}</span></li>

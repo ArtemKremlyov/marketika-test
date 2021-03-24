@@ -21,7 +21,7 @@
                     <tr>
                         <th scope="row">{{$book->title}}</th>
                         <td>{{substr($book->description, 0, 75)}}...</td>
-                        <td>{{$book->author->name}}</td>
+                        <td>{{$book->author->name ?? 'Unkown Author'}}</td>
                         <td>
                             <a href="{{route('books.show', $book)}}" class="btn btn-primary">Show</a>
                         </td>
