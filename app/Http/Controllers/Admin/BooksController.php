@@ -15,7 +15,8 @@ class BooksController extends Controller
      */
     public function index()
     {
-        //
+        $books = Book::paginate(15);
+        return view('admin.books', compact('books'));
     }
 
     /**
@@ -47,7 +48,7 @@ class BooksController extends Controller
      */
     public function show(Book $book)
     {
-        //
+        return view('admin.book_show', compact($book));
     }
 
     /**
