@@ -20,7 +20,7 @@
                         <td>{{substr($book->description, 0, 75)}}...</td>
                         <td>{{$book->author->name}}</td>
                         <td>
-                            <a href="#" class="btn btn-primary">Show</a>
+                            <a href="{{route('books.show', $book)}}" class="btn btn-primary">Show</a>
                         </td>
                         <td>
                             <a href="#" class="btn btn-secondary">Edit</a>

@@ -48,7 +48,7 @@ class BooksController extends Controller
      */
     public function show(Book $book)
     {
-        return view('admin.book_show', compact($book));
+        return view('admin.book', compact('book'));
     }
 
     /**
