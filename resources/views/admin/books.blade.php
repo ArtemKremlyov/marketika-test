@@ -4,6 +4,9 @@
 @section('content')
     <div class="container">
         <h1 class="card-title text-center mt-5 mb-5 text-primary">All books</h1>
+        @if(session('success'))
+            <div class="alert alert-success">{{session('success')}}</div>
+        @endif
         <table class="table">
             <thead>
                 <tr>
@@ -26,7 +29,9 @@
                             <a href="#" class="btn btn-secondary">Edit</a>
                         </td>
                         <td>
-                            <form action="/">
+                            <form action="{{route('books.destroy', $book)}}" method="POST">
+                                @csrf
+                                @method('DELETE')
                                 <button type="submit" class="btn btn-danger">Delete</button>
                             </form>
                         </td>
