@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AuthorRequest;
 use App\Models\Author;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use function React\Promise\reduce;
 
 class AuthorsController extends Controller
@@ -12,7 +14,7 @@ class AuthorsController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
@@ -23,29 +25,28 @@ class AuthorsController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
-        //
+        return view('admin.author_form');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return Response
      */
-    public function store(Request $request)
+    public function store(AuthorRequest $request)
     {
-
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Author  $author
-     * @return \Illuminate\Http\Response
+     * @param Author $author
+     * @return Response
      */
     public function show(Author $author)
     {
@@ -55,8 +56,8 @@ class AuthorsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Author  $author
-     * @return \Illuminate\Http\Response
+     * @param Author $author
+     * @return Response
      */
     public function edit(Author $author)
     {
@@ -66,11 +67,11 @@ class AuthorsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Author  $author
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param Author $author
+     * @return Response
      */
-    public function update(Request $request, Author $author)
+    public function update(AuthorRequest $request, Author $author)
     {
         $author->update($request->only(['name', 'birthdate', 'description']));
         return redirect()->route('authors.index')->withSuccess('Book: '.$request->name.' success updated');
@@ -79,8 +80,9 @@ class AuthorsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Author  $author
-     * @return \Illuminate\Http\Response
+     * @param Author $author
+     * @return Response
+     * @throws \Exception
      */
     public function destroy(Author $author)
     {

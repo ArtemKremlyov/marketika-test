@@ -17,6 +17,9 @@
             </div>
             <div class="row mb-2">
                 <input type="date" value="{{isset($author) ? $author->birthdate : ''}}" name="birthdate" class="form-control">
+                @error('birthdate')
+                   <div class="alert alert-danger">{{$message}}</div>
+                @enderror
             </div>
             <div class="row mb-3">
                 <textarea name="description" class="form-control" placeholder="Author description">{{isset($author) ? $author->description : ''}}</textarea>
