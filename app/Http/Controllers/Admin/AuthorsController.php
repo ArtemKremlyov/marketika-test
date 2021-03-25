@@ -40,6 +40,8 @@ class AuthorsController extends Controller
      */
     public function store(AuthorRequest $request)
     {
+        Author::create($request->only(['name', 'birthdate', 'description']));
+        return redirect()->route('authors.index')->withSuccess('Book: '.$request->name.' success created');
     }
 
     /**
