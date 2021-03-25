@@ -3,14 +3,14 @@
 
 @section('content')
     <div class="container">
-        <h1 class="text-center m-3">Create Book</h1>
+        <h1 class="text-center m-3">{{isset($book) ? 'Update' : 'Create'}} Book</h1>
         <form action="{{isset($book) ? route('books.update', $book) : route('books.store')}}" method="POST">
             @isset($book)
                 @method('PUT')
             @endisset
             @csrf
             <div class="row mb-2">
-                <input type="text" value="{{isset($book) ? $book->title : ''}}" name="title" placeholder="Book title" class="form-control">
+                <input type="text" value="{{old('title' ,isset($book) ? $book->title : '')}}" name="title" placeholder="Book title" class="form-control">
                 @error('title')
                     <div class="alert alert-danger">{{$message}}</div>
                 @enderror
@@ -20,10 +20,16 @@
                     <option disabled selected>Book Author</option>
                     @foreach($authors as $author)
                         @if(isset($book) && isset($book->author))
-                            @if($book->author->id == $author->id)
-                                <option selected value="{{$author->id}}">{{$author->name}}</option>
+                            @if(!is_null(old('author_id')))
+                                @if(old('author_id') == $author->id)
+                                    <option selected value="{{$author->id}}">{{$author->name}}</option>
+                                @endif
                             @else
-                                <option value="{{$author->id}}">{{$author->name}}</option>
+                                @if($book->author->id == $author->id)
+                                    <option selected value="{{$author->id}}">{{$author->name}}</option>
+                                @else
+                                    <option value="{{$author->id}}">{{$author->name}}</option>
+                                @endif
                             @endif
                         @else
                             <option value="{{$author->id}}">{{$author->name}}</option>
@@ -35,7 +41,7 @@
                 @enderror
             </div>
             <div class="row mb-3">
-                <textarea name="description" class="form-control" placeholder="Book description">{{isset($book) ? $book->description : ''}}</textarea>
+                <textarea name="description" class="form-control" placeholder="Book description">{{old('description' ,isset($book) ? $book->description : '')}}</textarea>
                 @error('description')
                     <div class="alert alert-danger">{{$message}}</div>
                 @enderror

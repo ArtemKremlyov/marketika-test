@@ -8,8 +8,8 @@ use Illuminate\Http\Request;
 class MainController extends Controller
 {
     public function authors() {
-        $authors = Author::all();
+        $authors = Author::paginate(15);
 
-        return view('authors', compact('authors'));
+        return view('home', compact('authors'));
     }
 }

@@ -22,6 +22,7 @@ Route::get('/', [MainController::class, 'authors']);
 Auth::routes();
 
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
+    Route::redirect('/', 'admin/authors');
     Route::resource('authors', AuthorsController::class);
     Route::resource('books', BooksController::class);
 });

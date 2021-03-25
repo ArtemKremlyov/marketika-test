@@ -24,17 +24,6 @@ class BooksController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
      * Display the specified resource.
      *
      * @param Book $book
@@ -42,7 +31,8 @@ class BooksController extends Controller
      */
     public function show(Book $book)
     {
-        $book = $book::with('author')->get();
+        dd($book);
+        $book = $book->with('author')->get();
         return response()->json($book, 200);
     }
 
@@ -53,7 +43,7 @@ class BooksController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(BookRequest $request)
+    public function update(Request $request)
     {
         $book = Book::findOrFail($request->id);
         $book->update($request->only(['title', 'author_id', 'description']));
@@ -71,6 +61,6 @@ class BooksController extends Controller
     public function destroy(Book $book)
     {
         $book->delete();
-        return response()->json(['message' => 'Success deleted'], 204);
+        return response()->json(null, 204);
     }
 }
