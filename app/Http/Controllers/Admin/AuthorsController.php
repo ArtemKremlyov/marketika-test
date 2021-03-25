@@ -7,7 +7,6 @@ use App\Http\Requests\AuthorRequest;
 use App\Models\Author;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use function React\Promise\reduce;
 
 class AuthorsController extends Controller
 {
@@ -35,7 +34,7 @@ class AuthorsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param Request $request
+     * @param AuthorRequest $request
      * @return Response
      */
     public function store(AuthorRequest $request)
@@ -69,7 +68,7 @@ class AuthorsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
+     * @param AuthorRequest $request
      * @param Author $author
      * @return Response
      */

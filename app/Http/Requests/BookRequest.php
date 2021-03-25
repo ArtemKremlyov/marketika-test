@@ -14,6 +14,7 @@ class BookRequest extends FormRequest
      */
     public function authorize()
     {
+        if($this->getMethod() == 'POST') return true;
         return Auth::check();
     }
 
