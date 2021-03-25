@@ -31,7 +31,6 @@ class BooksController extends Controller
      */
     public function show(Book $book)
     {
-        dd($book);
         $book = $book->with('author')->get();
         return response()->json($book, 200);
     }
@@ -46,6 +45,13 @@ class BooksController extends Controller
     public function update(Request $request)
     {
         $book = Book::findOrFail($request->id);
+
+        $request->validate([
+            'title' => 'min:3|max:256',
+            'author_id' => 'exists:App\Models\Author,id',
+            'description' => 'min:15|max:2000'
+        ]);
+
         $book->update($request->only(['title', 'author_id', 'description']));
 
         return response()->json(['message' => 'Success update'], 200);
