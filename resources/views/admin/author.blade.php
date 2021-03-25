@@ -16,13 +16,13 @@
                     <li class="list-group-item">Last update: <span class="font-weight-bold">{{$author->updated_at}}</span></li>
                 </ul>
                 <div class="row d-flex flex-column align-items-center">
-                    <a href="/" class="btn btn-primary mb-2">Edit author info</a>
+                    <a href="{{route('authors.edit', $author)}}" class="btn btn-primary mb-2">Edit author info</a>
                     <form action="{{route('authors.destroy', $author)}}" method="POST" class="mb-2">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger">Delete</button>
                     </form>
-                    <a href="{{route('books.index')}}" class="btn btn-dark mb-2">Back to authors page</a>
+                    <a href="{{route('authors.index')}}" class="btn btn-dark mb-2">Back to authors page</a>
                 </div>
             </div>
             <div class="col-6 d-flex flex-column align-items-start">
@@ -35,7 +35,7 @@
                     <ul class="list-group overflow-auto h-100" style="max-height: 500px">
                         @foreach($author->books as $book)
                             <li class="list-group-item">
-                                <a href="{{route('authors.show', $book)}}" target="_blank" class="d-flex">
+                                <a href="{{route('books.show', $book)}}" target="_blank" class="d-flex">
                                     <div class="col-6">{{$book->title}}</div>
                                     <div class="col-6">{{$book->description}}</div>
                                 </a>

@@ -4,7 +4,8 @@
 
 @section('content')
     <div class="container">
-        <h1 class="card-title text-center mt-5 mb-5 text-primary">All books</h1>
+        <h1 class="card-title text-center mt-5 mb-5 text-primary">All authors</h1>
+        <a href="{{route('authors.create')}}" class="btn btn-dark mb-5 w-100 ">Create author</a>
         @if(session('success'))
             <div class="alert alert-success">{{session('success')}}</div>
         @endif
@@ -27,9 +28,8 @@
                     <td>{{$author->books->count()}}</td>
                     <td>
                         <a href="{{route('authors.show', $author)}}" class="btn btn-primary">Show</a>
-
                     <td>
-                        <a href="#" class="btn btn-secondary">Edit</a>
+                        <a href="{{route('authors.edit', $author)}}" class="btn btn-secondary">Edit</a>
                     </td>
                     <td>
                         <form action="{{route('authors.destroy', $author)}}" method="POST">

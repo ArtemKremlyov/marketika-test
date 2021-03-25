@@ -38,7 +38,7 @@ class AuthorsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**
@@ -60,7 +60,7 @@ class AuthorsController extends Controller
      */
     public function edit(Author $author)
     {
-        //
+        return view('admin.author_form', compact('author'));
     }
 
     /**
@@ -72,7 +72,8 @@ class AuthorsController extends Controller
      */
     public function update(Request $request, Author $author)
     {
-        //
+        $author->update($request->only(['name', 'birthdate', 'description']));
+        return redirect()->route('authors.index')->withSuccess('Book: '.$request->name.' success updated');
     }
 
     /**
